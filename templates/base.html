@@ -18,8 +18,8 @@
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'index' %}" >Group portal</a>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse container" id="navbarNav">
+        <a class="navbar-brand" href="{% url 'index' %}" >Group portal</a>
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link active" href="" >Diary</a>
@@ -51,8 +51,8 @@
         </ul>
       </div>
     </div>
-    
     </nav>
-  {% block content %}{% endblock %}
+    
+  <main class="container">{% block content %}{% endblock %}</main>
 </body>
 </html>
