@@ -1,0 +1,46 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block content %}
+    <div style="border-radius: 20px;" class="topic-header">
+        <div class="d-flex align-items-center mb-3 ">
+            <img src="{% static 'images/user.png' %}" alt="{{ topic.created_by.username }}" class="avatar mr-3">
+            <div>
+                <p class="mb-0">{{ topic.created_by.username }} | {{ topic.created_at|timesince }} тому</p>
+            </div>
+        </div>
+        <h1>{{ topic.title }}</h1>
+        <p>{{ topic.description }}</p>
+        <div class="like-container">
+            <img src="{% if user|is_liked:topic %}{% static 'images/liked.png' %}{% else %}{% static 'images/like.png' %}{% endif %}" alt="Like" class="like-icon" id="like-btn" data-liked="{{ user|is_liked:topic }}">
+            <span id="like-count">{{ topic.likes }}</span>
+        </div>
+    </div>
+
+    <!-- Ensure jQuery is loaded properly -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('#like-btn').click(function() {
+                var topicId = {{ topic.id }};
+                $.ajax({
+                    url: '{% url "like_topic" topic.id %}',
+                    method: 'POST',
+                    headers: {'X-CSRFToken': '{{ csrf_token }}'},
+                    dataType: 'json',
+                    success: function(response) {
+                        $('#like-count').text(response.likes);
+                        if (response.liked) {
+                            $('#like-btn').attr('src', '{% static "images/liked.png" %}');
+                        } else {
+                            $('#like-btn').attr('src', '{% static "images/like.png" %}');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

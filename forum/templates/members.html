@@ -1,0 +1,71 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<style>
+    .container {
+        max-width: 900px; /* збільшуємо ширину форми */
+        border-radius: 15px; /* закруглення кутів контейнера */
+        padding: 20px;
+        background-color: #f8f9fa; /* світлий фон для контейнера */
+    }
+    .topic-header {
+        border-radius: 10px;
+        background-color: #007acc;
+        color: white; /* білий текст для заголовків */
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    .list-group {
+        padding-left: 0;
+    }
+    .list-group-item {
+        background-color: #ffffff;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        transition: background-color 0.3s;
+    }
+    .list-group-item:hover {
+        background-color: #f1f1f1;
+    }
+</style>
+
+<div class="container mt-4">
+    <h1 class="text-primary">Видатні користувачі</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2 style="height: 100px;"class="topic-header">Найбільше повідомлень</h2>
+            <ul class="list-group">
+                {% for user in top_posters %}
+                    <li class="list-group-item">
+                        {{ user.username }} (Повідомлень: {{ user.post_count }})
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h2 style="height: 100px;" class="topic-header">Найбільше лайків</h2>
+            <ul class="list-group">
+                {% for user in top_reactors %}
+                    <li class="list-group-item">
+                        {{ user.username }} (Лайків: {{ user.like_count }})
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h2 style="height: 100px;" class="topic-header">Найбільше створено тем</h2>
+            <ul class="list-group">
+                {% for user in top_topic_creators %}
+                    <li class="list-group-item">
+                        {{ user.username }} (Тем: {{ user.topic_count }})
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block content %}
+    <h1 class="forum-title text-center text-primary">{{ section.title }}</h1>
+    <p>{{ section.description }}</p>
+    <a href="{% url 'new_topic' section.pk %}" style="margin-left: 600px;" class="btn btn-primary mt-3">Створити тему</a>
+    {% if not topics %}
+        <p style="margin-top: 10px;" class="no-topics text-muted bg-light p-3 rounded">Поки що немає тем.</p>
+    {% else %}
+        <div class="list-group mt-3">
+            {% for topic in topics %}
+                <div class="section-item list-group-item">
+                    <div style="border-radius: 10px;" class="d-flex align-items-center">
+                        <img src="{% static 'images/user.png' %}" alt="{{ topic.created_by.username }}" class="avatar mr-3">
+                        <div>
+                            <a href="{% url 'topic_detail' topic.pk %}">{{ topic.title }}</a>
+                            <p class="mb-0">{{ topic.created_by.username }}                        | Створено {{ topic.created_at|timesince }} тому</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
+    <footer class="bg-primary text-white text-center py-3 mt-4">
+        <p>&copy; 2024 Forum. Всі права захищені.</p>
+    </footer>

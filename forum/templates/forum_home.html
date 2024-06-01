@@ -1,0 +1,17 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <h1 class="forum-title text-center text-primary">Форум</h1>
+    {% if not sections %}
+        <p class="no-sections text-center text-muted bg-light p-3 rounded">Поки що немає розділів.</p>
+    {% else %}
+        <div class="list-group">
+            {% for section in sections %}
+                <div class="section-item list-group-item">
+                    <a href="{% url 'section_detail' section.pk %}">{{ section.title }}</a>
+                    <span class="badge badge-pill badge-primary float-right">Тем: {{ section.topics.count }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

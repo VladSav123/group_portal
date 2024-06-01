@@ -1,0 +1,107 @@
+{% extends "base_generic.html" %}
+
+{% block body_class %}
+no-footer
+{% endblock %}
+
+{% block content %}
+<style>
+    .no-footer footer {
+        display: none;
+    }
+    .container {
+        max-width: 900px; /* збільшуємо ширину форми */
+        border-radius: 15px; /* закруглення кутів контейнера */
+        padding: 20px;
+        background-color: #f8f9fa; /* світлий фон для контейнера */
+    }
+    .topic-header {
+        border-radius: 10px;
+        background-color: #007acc;
+        color: white; /* білий текст для заголовків */
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    .sections-list, .topics-list, .posts-list, .likes-list {
+        list-style: none;
+        padding-left: 0;
+    }
+    .section-item, .topic-item, .post-item, .like-item {
+
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        transition: background-color 0.3s;
+    }
+    .section-item:hover, .topic-item:hover, .post-item:hover, .like-item:hover {
+        background-color: #f1f1f1;
+    }
+    .no-sections, .no-topics {
+        background-color: #72b894;
+        border-radius: 5px;
+        padding: 10px;
+        color: white; /* білий текст для відсутніх елементів */
+    }
+    .section-item:hover {
+        background-color: #AFE1AF;
+    }
+</style>
+
+<div class="container mt-4">
+    <h1 class="text-primary">Що нового</h1>
+
+    <h2 class="topic-header">Нові Розділи</h2>
+    {% if latest_sections %}
+        <ul class="sections-list">
+            {% for section in latest_sections %}
+                <li class="section-item">
+                    {{ section.title }} (Створено: {{ section.created_at }})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-sections">Немає нових розділів</p>
+    {% endif %}
+
+    <h2 class="topic-header">Нові Теми</h2>
+    {% if latest_topics %}
+        <ul class="topics-list">
+            {% for topic in latest_topics %}
+                <li class="topic-item">
+                    {{ topic.title }} (Автор: {{ topic.created_by.username }} Створено: {{ topic.created_at }})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-topics">Немає нових тем</p>
+    {% endif %}
+
+    <h2 class="topic-header">Нові Повідомлення</h2>
+    {% if latest_posts %}
+        <ul class="posts-list">
+            {% for post in latest_posts %}
+                <li class="post-item">
+                    {{ post.message|truncatewords:10 }} (Автор: {{ post.created_by.username }} Створено: {{ post.created_at }})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-topics">Немає нових повідомлень</p>
+    {% endif %}
+
+    <h2 class="topic-header">Нові Лайки</h2>
+    {% if latest_likes %}
+        <ul class="likes-list">
+            {% for like in latest_likes %}
+                <li class="like-item">
+                    {{ like.user.username }} поставив лайк темі "{{ like.topic.title }}" ({{ like.created_at }})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-topics">Немає нових лайків</p>
+    {% endif %}
+</div>
+
+{% endblock %}

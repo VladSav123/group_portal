@@ -1,0 +1,175 @@
+body {
+    user-select: none;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+h1 {
+    font-family: 'Arial Black', sans-serif;
+}
+.navbar {
+    background-color: #3a579b;
+    color: white;
+    padding: 1em;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+}
+
+.navbar-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-nav li {
+    margin-right: 1em;
+}
+
+.navbar-nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 1em;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.forum-title {
+    text-align: center;
+}
+
+.no-sections, .no-topics {
+    text-align: center;
+    font-size: 1.2em;
+    background-color: #4f69a4;
+    color: white;
+    padding: 1em;
+}
+
+.sections-list, .topics-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-item, .topic-item {
+    padding: 1em;
+    border-bottom: 1px solid #ddd;
+}
+
+.section-item a, .topic-item a {
+    font-size: 1.2em;
+    color: #fdfdfd;
+    text-decoration: none;
+}
+
+.section-item p, .topic-item p {
+    margin: 0.5em 0 0;
+    color: #649bf5;
+}
+
+.topic-header {
+    background-color: #72b894;
+    padding: 1em;
+    color: white;
+}
+
+.posts-list {
+    margin-top: 1em;
+}
+
+.post-item {
+    padding: 1em;
+    border-bottom: 1px solid #ddd;
+}
+
+form {
+    margin-top: 1em;
+}
+
+form button {
+    background-color: #b7a84d;
+    color: white;
+    padding: 0.5em 1em;
+    border: none;
+    cursor: pointer;
+}
+
+.new-topic-btn {
+    display: inline-block;
+    margin-top: 1em;
+    background-color: #b7a84d;
+    color: white;
+    padding: 0.5em 1em;
+    text-decoration: none;
+}
+
+
+
+.section-item {
+    margin-top: 20px;
+    color: #ffffff !important;
+    background-color: #72b894;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+.section-item:hover {
+    background-color: #406853;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.text-primary {
+    color: #3a579b !important;
+}
+
+.bg-primary {
+    background-color: #3a579b !important;
+}
+
+.btn-secondary {
+    background-color: #b7a84d;
+    border-color: #b7a84d;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+.navbar-nav img {
+    border-radius: 50%;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Height of the footer */
+    line-height: 60px; /* Vertically center the text */
+}
+
+.like-container {
+    display: inline-block;
+    margin-left: 650px; /* Adjust margin as needed */
+    margin-top: 50px;
+    background-color: #4f69a4;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.like-icon {
+    vertical-align: middle; /* Align the image vertically with the text */
+}
+
+#like-count {
+    margin-left: 10px; /* Adjust margin as needed */
+}

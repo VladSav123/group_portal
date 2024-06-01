@@ -1,0 +1,27 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <h1 style="margin-left: 210px; font-size: 30px; margin-bottom: 20px;">Створити тему</h1>
+            <input type="text" name="{{ form.title.name }}" class="form-control form-control-lg" placeholder="Заголовок" style="width: 100%;" id="{{ form.title.id_for_label }}">
+        </div>
+        <div class="form-group">
+            <textarea name="{{ form.description.name }}" class="form-control" style="width: 100%; height: 200px; resize: none;" id="{{ form.description.id_for_label }}"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Створити тему</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const descriptionField = document.getElementById('{{ form.description.id_for_label }}');
+        descriptionField.style.whiteSpace = 'pre-wrap';
+    });
+</script>
+{% endblock %}

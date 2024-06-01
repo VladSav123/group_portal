@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форум</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .content-wrapper {
+            flex: 1;
+        }
+        .navbar-nav .nav-item {
+            margin-right: 50px;
+        }
+        .navbar-nav .nav-link {
+            transition: color 0.3s, border-bottom 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        .navbar-nav .nav-link:hover {
+            border-bottom: 3px solid #fff;
+        }
+        .navbar-icons {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-icons img {
+            margin-left: 30px;
+            cursor: pointer;
+        }
+        .navbar-icons .user-avatar {
+            border-radius: 50%;
+        }
+        .nav-link {
+            color: #ffffff;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body class="{% block body_class %}{% endblock %}">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a style="margin-left: 20px;" class="navbar-brand" href="#">Group portal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a style="margin-left: 50px;" class="nav-link" href="#">Головна</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'forum_home' %}">Форум</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'whats_new' %}">Що нового</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'members' %}">Користувачі</a>
+                </li>
+            </ul>
+            <div class="navbar-icons ml-auto">
+                <img src="{% static 'images/user_default.png' %}" alt="User" class="user-avatar" width="44" height="44">
+                <img src="{% static 'images/notification.png' %}" alt="Notifications" width="28" height="28">
+                <img src="{% static 'images/search.png' %}" alt="Search" width="28" height="28">
+                <a href="{% url 'user_profile' %}"></a>
+            </div>
+        </div>
+    </nav>
+    <div class="content-wrapper container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer class="bg-primary text-white text-center py-3 mt-4">
+        <p>&copy; 2024 Forum. Всі права захищені.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
