@@ -51,7 +51,7 @@ no-footer
 <div class="container mt-4">
     <h1 class="text-primary">Що нового</h1>
 
-    <h2 class="topic-header">Нові Розділи</h2>
+    <h2 class="topic-header">Розділи</h2>
     {% if latest_sections %}
         <ul class="sections-list">
             {% for section in latest_sections %}
@@ -64,7 +64,7 @@ no-footer
         <p class="no-sections">Немає нових розділів</p>
     {% endif %}
 
-    <h2 class="topic-header">Нові Теми</h2>
+    <h2 class="topic-header">Теми</h2>
     {% if latest_topics %}
         <ul class="topics-list">
             {% for topic in latest_topics %}
@@ -77,7 +77,7 @@ no-footer
         <p class="no-topics">Немає нових тем</p>
     {% endif %}
 
-    <h2 class="topic-header">Нові Повідомлення</h2>
+    <h2 class="topic-header">Повідомлення</h2>
     {% if latest_posts %}
         <ul class="posts-list">
             {% for post in latest_posts %}
@@ -90,7 +90,7 @@ no-footer
         <p class="no-topics">Немає нових повідомлень</p>
     {% endif %}
 
-    <h2 class="topic-header">Нові Лайки</h2>
+    <h2 class="topic-header">Лайки</h2>
     {% if latest_likes %}
         <ul class="likes-list">
             {% for like in latest_likes %}
